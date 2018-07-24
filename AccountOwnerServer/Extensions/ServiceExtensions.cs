@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AccountOwnerServer.Extensions
 {
@@ -14,6 +15,15 @@ namespace AccountOwnerServer.Extensions
                 b => b.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowCredentials()));
+        }
+
+        /// <summary>
+        /// Configures  IIS integration.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        public static void ConfigureIISIntegration(this IServiceCollection service)
+        {
+            service.Configure<IISOptions>(options => { });
         }
     }
 }
