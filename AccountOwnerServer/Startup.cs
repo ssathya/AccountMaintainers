@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using AccountOwnerServer.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,6 +7,9 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using NLog;
+using NLog.Extensions.Logging;
 
 namespace AccountOwnerServer
 {
@@ -13,6 +17,9 @@ namespace AccountOwnerServer
     {
         public Startup(IConfiguration configuration)
         {
+            //loggerFactory.ConfigureNLog(String.Concat(Directory.GetCurrentDirectory(), "/NLog.config"));
+            LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/NLog.config"));
+
             Configuration = configuration;
         }
 
@@ -24,6 +31,8 @@ namespace AccountOwnerServer
             services.ConfigureCors();
 
             services.ConfigureIISIntegration();
+
+            services.CallDiRegistration();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

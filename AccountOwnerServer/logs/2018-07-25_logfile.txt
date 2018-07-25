@@ -1,0 +1,16 @@
+2018-07-25 14:14:47.6437|DEBUG|LoggerService.LoggerManager|Debug message
+2018-07-25 14:14:47.7411|ERROR|LoggerService.LoggerManager|Error message
+2018-07-25 14:14:47.7471|INFO|LoggerService.LoggerManager|Info Message
+2018-07-25 14:14:47.7471|WARN|LoggerService.LoggerManager|Warn message
+2018-07-25 14:16:05.5467 DEBUG Debug message
+2018-07-25 14:16:05.6031 ERROR Error message
+2018-07-25 14:16:05.6087 INFO Info Message
+2018-07-25 14:16:05.6087 WARN Warn message
+2018-07-25 14:18:45.6394 DEBUG Debug message
+2018-07-25 14:18:45.6992 ERROR Error message
+2018-07-25 14:18:45.7043 INFO Info Message
+2018-07-25 14:18:45.7043 WARN Warn message
+2018-07-25 14:25:00.5119 - DEBUG: Debug message
+2018-07-25 14:25:00.5890 - ERROR: Error message
+2018-07-25 14:25:00.5963 - INFO: Info Message
+2018-07-25 14:25:00.5963 - WARN: Warn message

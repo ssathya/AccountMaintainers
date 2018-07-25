@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.Logging;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AccountOwnerServer.Controllers
@@ -10,10 +11,21 @@ namespace AccountOwnerServer.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly ILoggerManager _logger;
+
+        public ValuesController(ILoggerManager logger)
+        {
+            _logger = logger;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            _logger.LogDebug("Debug message");
+            _logger.LogError("Error message");
+            _logger.LogInfo("Info Message");
+            _logger.LogWarn("Warn message");
             return new string[] { "value1", "value2" };
         }
 

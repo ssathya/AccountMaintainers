@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Contracts.Logging;
+using LoggerService;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AccountOwnerServer.Extensions
@@ -24,6 +26,24 @@ namespace AccountOwnerServer.Extensions
         public static void ConfigureIISIntegration(this IServiceCollection service)
         {
             service.Configure<IISOptions>(options => { });
+        }
+
+        /// <summary>
+        /// Configures the logger service.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        private static void ConfigureLoggerService(this IServiceCollection service)
+        {
+            service.AddSingleton<ILoggerManager, LoggerManager>();
+        }
+
+        /// <summary>
+        /// Calls  Dependency injection registration services.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        public static void CallDiRegistration(this IServiceCollection service)
+        {
+            ConfigureLoggerService(service);
         }
     }
 }
