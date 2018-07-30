@@ -34,6 +34,8 @@ namespace AccountOwnerServer
 
             services.CallDiRegistration();
 
+            services.ConfigureSqlContext(Configuration);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

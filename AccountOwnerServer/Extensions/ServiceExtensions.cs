@@ -1,6 +1,9 @@
 ﻿using Contracts.Logging;
+using Entities;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AccountOwnerServer.Extensions
@@ -44,6 +47,12 @@ namespace AccountOwnerServer.Extensions
         public static void CallDiRegistration(this IServiceCollection service)
         {
             ConfigureLoggerService(service);
+        }
+
+        public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration)
+        {
+            var connectionString = configuration["ConnectionStrings:AccountOwnerConnection"];
+            services.AddDbContext<RepositoryContext>(o => o.UseSqlServer(connectionString));
         }
     }
 }
