@@ -1,4 +1,5 @@
 
+
 # .Net Core and Angular application
 
 This project is a reproduction of a series of articles that I found at [Code Maze](https://code-maze.com/net-core-web-development-part1/). The project is implemented in multiple parts and each part is summarized below.
@@ -20,3 +21,7 @@ We also update Startup.cs to use the helper methods.
 In this section we create two new projects,  Contracts and LoggerService. 
 Contracts hold all the application level interfaces and individual services (such as Logger Service for now) will implement the interface(s). We then register the logger service with the main application via Dependency injection. 
 We also test the logger service by changing the Values Controller - auto generated code which is a throw away when we complete the solution. 
+
+## Part 4
+Now that we have a feel how we are going to implement the application lets start with the data model and repository pattern that we'll use to access the database. 
+We create the Account and Owners model and DbContext class that will link our models to the database. We then create repository patterns that will abstract all  (CRUD) our database operations. 
