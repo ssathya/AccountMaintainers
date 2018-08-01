@@ -1,6 +1,3 @@
-
-
-
 # .Net Core and Angular application
 
 This project is a reproduction of a series of articles that I found at [Code Maze](https://code-maze.com/net-core-web-development-part1/). The project is implemented in multiple parts and each part is summarized below.
@@ -28,10 +25,10 @@ Now that we have a feel how we are going to implement the application let's star
 We create the Account and Owners model and DbContext class that will link our models to the database. We then create repository patterns that will abstract all  (CRUD) our database operations. 
 
 ## Part 5
-We now proceed to work on business logic; i.e. we’ll start with the controllers. As the application evolves we might be tempted to move certain database logics to controllers. We’ll keep all database logic inside the repository classes and controllers will be responsible for handling requests, model validation and returning responses to the frontend part of the application.
+We now proceed to work on business logic; i.e. weï¿½ll start with the controllers. As the application evolves we might be tempted to move certain database logics to controllers. Weï¿½ll keep all database logic inside the repository classes and controllers will be responsible for handling requests, model validation and returning responses to the frontend part of the application.
 
   
 
 In this section we implement the owner controller and as it is built we update the repository logic to serve the controller.
 
-*Until now the repository pattern logic is built using synchronous calls and the application suffers from performance issues with less than 10 records (did not index the database to illustrate this). We’ll eventually modify them to use asynchronous calls but for the time being we’ll live with synchronous calls.*
+*Until now the repository pattern logic is built using synchronous calls and the application suffers from performance issues with less than 10 records (did not index the database to illustrate this). Weï¿½ll eventually modify them to use asynchronous calls but for the time being weï¿½ll live with synchronous calls.*
