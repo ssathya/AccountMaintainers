@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Models
 {
-    public class Owner
+    public class Owner : IEntity
     {
         public Owner()
         {

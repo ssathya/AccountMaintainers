@@ -4,13 +4,9 @@ using Entities.Models;
 
 namespace Entities.ExtendedModels
 {
-    public class OwnerExtended
+    public class OwnerExtended : Owner
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public string Address { get; set; }
-
+        // ReSharper disable once UnusedAutoPropertyAccessor.Global
         public IEnumerable<Account> Accounts { get; set; }
 
         public OwnerExtended()

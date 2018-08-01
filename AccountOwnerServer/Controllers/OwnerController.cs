@@ -3,6 +3,7 @@ using Contracts.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using Entities.Extensions;
 using Entities.Models;
 
 namespace AccountOwnerServer.Controllers
@@ -52,7 +53,7 @@ namespace AccountOwnerServer.Controllers
             try
             {
                 var owner = _repositoryWrapper.Owner.Find(o => o.Id.Equals(id));
-                if (owner == null || owner.Id.Equals(Guid.Empty))
+                if (owner == null || owner.IsEmptyObject())
                 {
                     _logger.LogError($"Owner with id: {id}, was not found in database");
                     return NotFound();
@@ -78,7 +79,7 @@ namespace AccountOwnerServer.Controllers
             try
             {
                 var owner = _repositoryWrapper.Owner.GetOwnerWithDetails(id);
-                if (owner == null || owner.Id.Equals(Guid.Empty))
+                if (owner == null || owner.IsEmptyObject())
                 {
                     _logger.LogError($"Owner with id: {id} not found in database");
                     return NotFound();
@@ -96,7 +97,7 @@ namespace AccountOwnerServer.Controllers
         [HttpPost]
         public IActionResult CreateOwner([FromBody] Owner owner)
         {
-            if (owner == null)
+            if (owner.IsObjectNull())
             {
                 _logger.LogError("Owner object sent from client is null");
                 return BadRequest("Owner object is null");
