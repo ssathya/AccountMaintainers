@@ -1,3 +1,4 @@
+
 # .Net Core and Angular application
 
 This project is a reproduction of a series of articles that I found at [Code Maze](https://code-maze.com/net-core-web-development-part1/). The project is implemented in multiple parts and each part is summarized below.
@@ -31,4 +32,4 @@ We now proceed to work on business logic; i.e. we'll start with the controllers.
 
 In this section we implement the owner controller and as it is built we update the repository logic to serve the controller.
 
-*Until now the repository pattern logic is built using synchronous calls and the application suffers from performance issues with less than 10 records (did not index the database to illustrate this). We�ll eventually modify them to use asynchronous calls but for the time being we�ll live with synchronous calls.*
+*Until now the repository pattern logic is built using synchronous calls and the application suffers from performance issues with less than 10 records (did not index the database to illustrate this). We'll eventually modify them to use asynchronous calls but for the time being live with synchronous calls.*
