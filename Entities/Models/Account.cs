@@ -1,11 +1,18 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Models
 {
     public class Account
     {
-        public Guid AccountId { get; set; }
+        public Account()
+        {
+            AccountType = "";
+        }
+
+        [Column("AccountId")]
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Date created is required")]
         public DateTime DateCreated { get; set; }

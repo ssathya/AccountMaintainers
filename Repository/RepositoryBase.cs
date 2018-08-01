@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Repository
 {
-    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class, new()
     {
         private readonly RepositoryContext _repositoryContext;
 
@@ -37,7 +37,10 @@ namespace Repository
         /// </summary>
         /// <param name="expression">The expression.</param>
         /// <returns></returns>
-        public T Find(Expression<Func<T, bool>> expression) => FindByCondition(expression).FirstOrDefault();
+        public T Find(Expression<Func<T, bool>> expression)
+        {
+            return FindByCondition(expression).DefaultIfEmpty(new T()).FirstOrDefault();
+        }
 
         /// <inheritdoc />
         /// <summary>

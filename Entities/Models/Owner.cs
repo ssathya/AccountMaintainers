@@ -1,11 +1,20 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Models
 {
     public class Owner
     {
-        public Guid OwnerId { get; set; }
+        public Owner()
+        {
+            Name = "";
+            Address = "";
+            DateOfBirth = new DateTime(1900, 1, 1);
+        }
+
+        [Column("OwnerId")]
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Name is required")]
         [StringLength(60, ErrorMessage = "Name too long (max 60 characters)")]

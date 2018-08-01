@@ -38,5 +38,26 @@ namespace AccountOwnerServer.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetOwnerById(Guid id)
+        {
+            try
+            {
+                var owner = _repositoryWrapper.Owner.Find(o => o.Id.Equals(id));
+                if (owner == null)
+                {
+                    _logger.LogError($"Owner with id: {id}, was not found in database");
+                    return NotFound();
+                }
+                _logger.LogInfo($"Returning owner with id: {id}");
+                return Ok(owner);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside GetOwnerById action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
     }
 }
