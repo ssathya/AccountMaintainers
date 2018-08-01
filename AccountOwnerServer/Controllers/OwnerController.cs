@@ -119,5 +119,38 @@ namespace AccountOwnerServer.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateOwner(Guid id, [FromBody] Owner owner)
+        {
+            if (owner.IsObjectNull())
+            {
+                _logger.LogError("Owner object sent from client is null");
+                return BadRequest("Owner object is null");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid owner object sent from client");
+                return BadRequest("Invalid model object");
+            }
+
+            try
+            {
+                var dbOwner = _repositoryWrapper.Owner.GetOwnerById(id);
+                if (dbOwner.IsEmptyObject())
+                {
+                    _logger.LogError($"Owner with id: {id},  not found in database");
+                    return NotFound();
+                }
+                _repositoryWrapper.Owner.UpdateOwner(dbOwner, owner);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong in UpdateOwner action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
     }
 }

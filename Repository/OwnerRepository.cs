@@ -4,6 +4,7 @@ using System.Linq;
 using Contracts.Repository;
 using Entities;
 using Entities.ExtendedModels;
+using Entities.Extensions;
 using Entities.Models;
 
 namespace Repository
@@ -39,6 +40,13 @@ namespace Repository
         {
             newOwner.Id = new Guid();
             Create(newOwner);
+            Save();
+        }
+
+        public void UpdateOwner(Owner dbOwner, Owner owner)
+        {
+            dbOwner.Map(owner);
+            Update(dbOwner);
             Save();
         }
     }
