@@ -1,4 +1,3 @@
-
 # .Net Core and Angular application
 
 This project is a reproduction of a series of articles that I found at [Code Maze](https://code-maze.com/net-core-web-development-part1/). The project is implemented in multiple parts and each part is summarized below.
@@ -33,5 +32,8 @@ In this section, we implement the owner controller and as it is built we update 
 *Until now the repository pattern logic is built using synchronous calls and the application suffers from performance issues with less than 10 records (did not index the database to illustrate this). We'll eventually modify them to use asynchronous calls but for the time being live with synchronous calls.*
 
 ## Part 6
-We’ll implement the Put, Post and Delete API calls for Account Owner. In this section, the repository interfaces and specific methods in Account and owner were updated to handle the API calls. We also did some code refactoring to ensure we call helper methods to validate database objects (rather than actual validation done at the controller end).
+We'll implement the Put, Post and Delete API calls for Account Owner. In this section, the repository interfaces 
+and specific methods in Account and owner were updated to handle the API calls. We also did some code refactoring 
+to ensure we call helper methods to validate database objects (rather than actual validation done at 
+the controller end).
 
