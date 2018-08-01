@@ -94,6 +94,11 @@ namespace AccountOwnerServer.Controllers
             }
         }
 
+        /// <summary>
+        /// Creates a new owner.
+        /// </summary>
+        /// <param name="owner">The owner.</param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult CreateOwner([FromBody] Owner owner)
         {
@@ -120,6 +125,12 @@ namespace AccountOwnerServer.Controllers
             }
         }
 
+        /// <summary>
+        /// Updates the owner.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="owner">The owner.</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult UpdateOwner(Guid id, [FromBody] Owner owner)
         {
@@ -149,6 +160,33 @@ namespace AccountOwnerServer.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Something went wrong in UpdateOwner action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteOwner(Guid id)
+        {
+            try
+            {
+                var owner = _repositoryWrapper.Owner.GetOwnerById(id);
+                if (owner.IsEmptyObject())
+                {
+                    _logger.LogError($"Owner with id: {id}, not found in database");
+                    return NotFound();
+                }
+
+                if (_repositoryWrapper.Account.AccountsByOwner(id).Any())
+                {
+                    _logger.LogError($"Cannot delete owner with id: {id}. Owners accounts are still active");
+                    return BadRequest("Cannot delete owner. It has related accounts which need to be deleted first");
+                }
+                _repositoryWrapper.Owner.DeleteOwner(owner);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside DeleteOwner action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }

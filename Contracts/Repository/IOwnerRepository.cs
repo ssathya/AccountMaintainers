@@ -16,5 +16,7 @@ namespace Contracts.Repository
         void CreateOwner(Owner newOwner);
 
         void UpdateOwner(Owner dbOwner, Owner owner);
+
+        void DeleteOwner(Owner owner);
     }
 }
