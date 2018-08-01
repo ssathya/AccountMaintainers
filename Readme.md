@@ -25,7 +25,7 @@ Now that we have a feel how we are going to implement the application let's star
 We create the Account and Owners model and DbContext class that will link our models to the database. We then create repository patterns that will abstract all  (CRUD) our database operations. 
 
 ## Part 5
-We now proceed to work on business logic; i.e. we�ll start with the controllers. As the application evolves we might be tempted to move certain database logics to controllers. We�ll keep all database logic inside the repository classes and controllers will be responsible for handling requests, model validation and returning responses to the frontend part of the application.
+We now proceed to work on business logic; i.e. we'll start with the controllers. As the application evolves we might be tempted to move certain database logics to controllers. We'll keep all database logic inside the repository classes and controllers will be responsible for handling requests, model validation and returning responses to the frontend part of the application.
 
   
 
