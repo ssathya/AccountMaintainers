@@ -3,6 +3,7 @@ using Contracts.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using Entities.Models;
 
 namespace AccountOwnerServer.Controllers
 {
@@ -11,14 +12,8 @@ namespace AccountOwnerServer.Controllers
     [ApiController]
     public class OwnerController : ControllerBase
     {
-        #region Private Fields
-
         private readonly ILoggerManager _logger;
         private readonly IRepositoryWrapper _repositoryWrapper;
-
-        #endregion Private Fields
-
-        #region Public Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OwnerController"/> class.
@@ -30,10 +25,6 @@ namespace AccountOwnerServer.Controllers
             _logger = logger;
             _repositoryWrapper = repositoryWrapper;
         }
-
-        #endregion Public Constructors
-
-        #region Public Methods
 
         /// <summary>
         /// Gets all owners.
@@ -55,12 +46,7 @@ namespace AccountOwnerServer.Controllers
             }
         }
 
-        /// <summary>
-        /// Gets the owner by identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "OwnerById")]
         public IActionResult GetOwnerById(Guid id)
         {
             try
@@ -107,6 +93,30 @@ namespace AccountOwnerServer.Controllers
             }
         }
 
-        #endregion Public Methods
+        [HttpPost]
+        public IActionResult CreateOwner([FromBody] Owner owner)
+        {
+            if (owner == null)
+            {
+                _logger.LogError("Owner object sent from client is null");
+                return BadRequest("Owner object is null");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid owner object sent from client");
+                return BadRequest("Invalid model object");
+            }
+            try
+            {
+                _repositoryWrapper.Owner.CreateOwner(owner);
+                return CreatedAtRoute("OwnerById", new { id = owner.Id }, owner);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside CreateOwner action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
     }
 }

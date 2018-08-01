@@ -34,5 +34,12 @@ namespace Repository
                     .Where(a => a.OwnerId == ownerId)
             };
         }
+
+        public void CreateOwner(Owner newOwner)
+        {
+            newOwner.Id = new Guid();
+            Create(newOwner);
+            Save();
+        }
     }
 }

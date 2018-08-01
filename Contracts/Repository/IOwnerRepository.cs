@@ -12,5 +12,7 @@ namespace Contracts.Repository
         Owner GetOwnerById(Guid ownerId);
 
         OwnerExtended GetOwnerWithDetails(Guid ownerId);
+
+        void CreateOwner(Owner newOwner);
     }
 }
