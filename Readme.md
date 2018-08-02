@@ -43,3 +43,11 @@ Commands used in this section:
  - ng new AccountOwnerClient
  - ng g component home
 
+ ## Part 8
+ In this section we proceed in making our GUI more user friendly. The following are implemented.
+ 
+ - Creating a Navigation Menu
+ - Configuring Angular Routing
+ - Styling Links
+ - Creating the Not-Found Component
+ 
