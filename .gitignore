@@ -260,3 +260,7 @@ paket-files/
 __pycache__/
 *.pyc
 /AccountOwnerServer/logs
+
+# Make github happy.
+package-lock.json
+
