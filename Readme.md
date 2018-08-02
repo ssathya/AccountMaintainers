@@ -1,4 +1,3 @@
-
 # .Net Core and Angular application
 
 This project is a reproduction of a series of articles that I found at [Code Maze](https://code-maze.com/net-core-web-development-part1/). The project is implemented in multiple parts and each part is summarized below.
