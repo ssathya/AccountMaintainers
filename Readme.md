@@ -50,4 +50,12 @@ Commands used in this section:
  - Configuring Angular Routing
  - Styling Links
  - Creating the Not-Found Component
+
+## Part 9
+In this section, we'll build services that will handle HTTP requests towards our server. We'll build services that will be used by another part of the application to talk to the server application.
+
+We are going to build 2 services in this part. The *first service is to read the environment variable*. This service will be used to obtain the appropriate server URL based on environment (production/development).
+The second service is *repository service*. Repository service will be the link for the front-end application to talk to the backend server for CRUD operation. 
+
+We register both the services in app.module.ts
  
