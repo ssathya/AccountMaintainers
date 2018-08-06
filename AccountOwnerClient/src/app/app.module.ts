@@ -20,7 +20,6 @@ import { RepositoryService } from './shared/services/repository.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RepositoryService,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: '404', component: NotFoundComponent },
@@ -29,7 +28,8 @@ import { RepositoryService } from './shared/services/repository.service';
     ])
   ],
   providers: [
-    EnvironmentUrlService
+    EnvironmentUrlService,
+    RepositoryService,
   ],
   bootstrap: [AppComponent]
 })
