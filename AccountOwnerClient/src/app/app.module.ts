@@ -20,7 +20,6 @@ import { RepositoryService } from './shared/services/repository.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RepositoryService,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'owner', loadChildren: './owner/owner.module#OwnerModule'},
@@ -30,7 +29,8 @@ import { RepositoryService } from './shared/services/repository.service';
     ])
   ],
   providers: [
-    EnvironmentUrlService
+    EnvironmentUrlService,
+    RepositoryService,
   ],
   bootstrap: [AppComponent]
 })
