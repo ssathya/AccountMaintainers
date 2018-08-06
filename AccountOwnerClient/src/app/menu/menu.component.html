@@ -6,9 +6,8 @@
       <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Account-Owner Home</a>
     </div>
     <ul class="nav navbar-nav">
-      <li>
-        <a href="#">Owner Action</a>
-      </li>
+      <li><a [routerLink]="['/owner/list']" routerLinkActive="active" 
+        [routerLinkActiveOptions]="{exact: true}">Owner Actions</a></li>
       <li>
         <a href="#">Account Action</a>
       </li>
